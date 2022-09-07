@@ -11,7 +11,7 @@
 
 - Ví dụ: **class** sinh viên chỉ kế thừa từ **class** con người.
 
-- Cú pháp:
+- Cú pháp:  
 ```cpp
 class <Tên lớp dẫn xuất>: <Từ khóa dẫn xuất> <Tên lớp cơ sở> { 
 
@@ -131,17 +131,13 @@ class <Tên lớp dẫn xuất>: <Từ khoá dẫn xuất> <Tên lớp cơ sở 
     class Bus: public Car, public PublicTransport {  // Thứ tự khai báo  	 
         int label; 	
     public: 
-        Bus();
+        Bus::Bus(): Car(), PublicTransport() { 	// Theo thứ tự dẫn xuất
+            this->label = 0; 
+        }
         Bus::Bus(int speed, string mark, float price, float ticket, int label): Car(speed, mark, price), PublicTransport(ticket) { // Theo thứ tự dẫn xuất 
             this->label = label;
         }
     };
-
-    Bus::Bus(): Car(), PublicTransport() { 	// Theo thứ tự dẫn xuất
-        label = 0; 
-    }
-
-    
     ```
 
     - Vì hàm huỷ bỏ là duy nhất của mỗi lớp, hơn nữa hàm huỷ bỏ của lớp cơ sở sẽ được tự động gọi đến khi giải phóng đối tượng của lớp dẫn xuất. Cho nên hàm huỷ bỏ trong đa kế thừa hoàn toàn tương tự hàm huỷ bỏ trong đơn kế thừa.
@@ -392,7 +388,7 @@ public:
 
 class SinhVien : public Person {
 public:
-	void eat()
+	void work()
 	{
 		cout << "Working in the university";
 	}
@@ -400,6 +396,6 @@ public:
 
 int main() {
 	SinhVien sv;
-	sv.eat(); // output: Working in the university
+	sv.work(); // output: Working in the university
 }
 ```
